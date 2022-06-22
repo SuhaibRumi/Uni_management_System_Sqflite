@@ -1,6 +1,6 @@
-class Quiz {
-  final String? quizId;
-  final String? quizNo;
+class Course {
+  final String? courseId;
+  final String? courseName;
   final String? sessionId;
   final String? classId;
   final String? semesterId;
@@ -8,19 +8,20 @@ class Quiz {
   final String? semesterName;
   final String? className;
 
-  Quiz(
-      {this.quizId,
-      this.quizNo,
+  Course(
+      {this.courseId,
+      this.courseName,
       this.sessionId,
-      this.classId,
-      this.semesterId,
       this.sessionName,
+      this.semesterId,
       this.semesterName,
+      this.classId,
       this.className});
-  factory Quiz.fromMap(Map map) {
-    return Quiz(
-      quizId: map['quizId'],
-      quizNo: map['quizNo'],
+
+  factory Course.fromMap(Map map) {
+    return Course(
+      courseId: map['courseId'],
+      courseName: map['courseName'],
       classId: map['classId'],
       className: map['className'],
       sessionId: map['semesterId'],
@@ -32,25 +33,26 @@ class Quiz {
   toMap() {
     Map<String, dynamic> row = {};
     row = {
-      'quizId':quizId,
-      'quizNo':quizNo,
-       'classId': classId,
+      'courseId': courseId,
+      'courseName': courseName,
+      'classId': classId,
       'className': className,
       'sessionId': sessionId,
       'sessionName': sessionName,
       'semesterId': semesterId,
       'semesterName': semesterName,
     };
+    return row;
   }
-
 }
-class QuizList {
-  final List<Quiz> quizList;
-  QuizList({required this.quizList});
 
-  factory QuizList.fromMap(List data) {
-    List<Quiz> quizes = [];
-    quizes = data.map((i) => Quiz.fromMap(i)).toList();
-    return QuizList(quizList: quizes);
+class CourseList {
+  final List<Course> courseList;
+  CourseList({required this.courseList});
+
+  factory CourseList.fromMap(List data) {
+    List<Course> course = [];
+    course = data.map((i) => Course.fromMap(i)).toList();
+    return CourseList(courseList: course);
   }
 }

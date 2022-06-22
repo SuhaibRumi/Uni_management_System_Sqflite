@@ -1,6 +1,6 @@
-class Assignment {
-  final String? assignmentId;
-  final String? assignmentNo;
+class Quiz {
+  final String? quizId;
+  final String? quizNo;
   final String? sessionId;
   final String? classId;
   final String? semesterId;
@@ -8,20 +8,20 @@ class Assignment {
   final String? semesterName;
   final String? className;
 
-  Assignment(
-      {this.sessionId,
+  Quiz(
+      {
+        this.quizId,
+      this.quizNo,
+      this.sessionId,
       this.classId,
       this.semesterId,
       this.sessionName,
       this.semesterName,
-      this.className,
-      this.assignmentId,
-      this.assignmentNo});
-
-  factory Assignment.fromMap(Map map) {
-    return Assignment(
-      assignmentId: map['id'],
-      assignmentNo: map['assignmentNo'],
+      this.className});
+  factory Quiz.fromMap(Map map) {
+    return Quiz(
+      quizId: map['quizId'],
+      quizNo: map['quizNo'],
       classId: map['classId'],
       className: map['className'],
       sessionId: map['semesterId'],
@@ -33,8 +33,8 @@ class Assignment {
   toMap() {
     Map<String, dynamic> row = {};
     row = {
-      'assignmentId': assignmentId,
-      'assignmentNo': assignmentNo,
+      'quizId': quizId,
+      'quizNo': quizNo,
       'classId': classId,
       'className': className,
       'sessionId': sessionId,
@@ -42,16 +42,17 @@ class Assignment {
       'semesterId': semesterId,
       'semesterName': semesterName,
     };
+    return row;
   }
 }
 
-class AssignmentList {
-  final List<Assignment> assignmentList;
-  AssignmentList({required this.assignmentList});
+class QuizList {
+  final List<Quiz> quizList;
+  QuizList({required this.quizList});
 
-  factory AssignmentList.fromMap(List data) {
-    List<Assignment> assignments = [];
-    assignments = data.map((i) => Assignment.fromMap(i)).toList();
-    return AssignmentList(assignmentList: assignments);
+  factory QuizList.fromMap(List data) {
+    List<Quiz> quizes = [];
+    quizes = data.map((i) => Quiz.fromMap(i)).toList();
+    return QuizList(quizList: quizes);
   }
 }

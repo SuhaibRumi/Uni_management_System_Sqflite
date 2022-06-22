@@ -41,7 +41,6 @@ class _SessionScreenState extends State<SessionScreen> {
                         hintText: "Enter your session",
                         icon: const Icon(
                           Icons.library_books_rounded,
-                          color: kSecondary,
                         ),
                         controller: _sessionController,
                       ),

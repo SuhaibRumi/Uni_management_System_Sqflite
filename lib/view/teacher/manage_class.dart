@@ -44,7 +44,7 @@ class _ClassMangemnetScreenState extends State<ClassMangemnetScreen> {
                         icon: const Icon(
                           Icons.person,
                           size: 30,
-                          color: kSecondary,
+                         
                         ),
                       ),
                     ],

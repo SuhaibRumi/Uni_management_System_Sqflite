@@ -17,14 +17,15 @@ class Semester {
     return row;
   }
 }
- class SemesterList {
-    final List<Semester> semesterList;
 
-    SemesterList({required this.semesterList});
-    
-    factory SemesterList.fromMap(List data) {
-      List<Semester> semester = [];
-      semester = data.map((e) => Semester.fromMap(e)).toList();
-      return SemesterList(semesterList: semester);
-    }
+class SemesterList {
+  final List<Semester> semesterList;
+
+  SemesterList({required this.semesterList});
+
+  factory SemesterList.fromMap(List data) {
+    List<Semester> semester = [];
+    semester = data.map((e) => Semester.fromMap(e)).toList();
+    return SemesterList(semesterList: semester);
   }
+}

@@ -37,9 +37,7 @@ class Teacher {
 
 class TeacherList {
   final List<Teacher> teachersList;
-
   TeacherList({required this.teachersList});
-
   factory TeacherList.fromMap(List data) {
     List<Teacher> teachers = [];
     teachers = data.map((i) => Teacher.fromMap(i)).toList();

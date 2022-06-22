@@ -1,4 +1,3 @@
-
 class Session {
   final String? sessionId;
   final String? sessionName;
@@ -19,17 +18,16 @@ class Session {
     };
     return row;
   }
-
 }
 
 class SessionList {
-    final List<Session> sessionList;
+  final List<Session> sessionList;
 
-    SessionList({required this.sessionList});
-    
-    factory SessionList.fromMap(List data) {
-      List<Session> session = [];
-      session = data.map((e) => Session.fromMap(e)).toList();
-      return SessionList(sessionList: session);
-    }
+  SessionList({required this.sessionList});
+
+  factory SessionList.fromMap(List data) {
+    List<Session> session = [];
+    session = data.map((e) => Session.fromMap(e)).toList();
+    return SessionList(sessionList: session);
   }
+}

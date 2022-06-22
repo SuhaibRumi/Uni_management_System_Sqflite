@@ -3,34 +3,39 @@ import 'package:flutter/material.dart';
 import '../utils/db_helper.dart';
 
 class AssigmentViewModel extends ChangeNotifier {
-  int? assignmentId;
-  String? assignmentDesc = "";
-  String? assignmentName = "";
+  String? assignmentId = "";
+  String? assignmentNo = "";
+  String? sessionId = "";
+  String? classId = "";
+  String? semesterId = "";
 
   var dbhelper = DBHelper.instance;
 
-  AssigmentViewModel({
-    this.assignmentName,
-    this.assignmentDesc,
-    this.assignmentId,
-  });
+  AssigmentViewModel(
+      {this.sessionId,
+      this.classId,
+      this.semesterId,
+      this.assignmentId,
+      this.assignmentNo});
   factory AssigmentViewModel.fromMap(Map map) {
     return AssigmentViewModel(
-      assignmentName: map['assignmentName'],
-      assignmentDesc: map['assignmentDesc'],
-      assignmentId: map['assignmentId'],
+      assignmentId: map['assignmentid'],
+      assignmentNo: map['assignmentNo'],
+      classId: map['classId'],
+      semesterId: map['semesterId'],
+      sessionId: map['semesterId'],
     );
   }
   saveData() async {
     String query =
-        "Insert into Assignments (assignmentName,assignmentDesc) values ('$assignmentName','$assignmentDesc')";
+        "Insert into Assignments (assignmentNo) values ('$assignmentNo',)";
     var id = await dbhelper.rawInsert(query: query);
     notifyListeners();
   }
 
   updateData() async {
     String query =
-        "Update Assignments set assignmentName  = '$assignmentName', assignmentDesc = '$assignmentDesc' where assignmentId = '$assignmentId'";
+        "Update Assignments set assignmentNo  = '$assignmentNo', where assignmentId = '$assignmentId'";
     var id = await dbhelper.rawUpdate(query: query);
     notifyListeners();
   }
@@ -43,11 +48,11 @@ class AssigmentViewModel extends ChangeNotifier {
   }
 
   Future<List<AssigmentViewModel>> getData() async {
-    List<AssigmentViewModel> assignment = [];
+    List<AssigmentViewModel> assignments = [];
     String query = "Select * from Assignments";
     var data = await dbhelper.getDataByQuery(query: query);
-    assignment = data.map((i) => AssigmentViewModel.fromMap(i)).toList();
+    assignments = data.map((i) => AssigmentViewModel.fromMap(i)).toList();
     notifyListeners();
-    return assignment;
+    return assignments;
   }
 }

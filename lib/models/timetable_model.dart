@@ -42,8 +42,10 @@ class TimeTable {
       'semesterId': semesterId,
       'semesterName': semesterName,
     };
+    return row;
   }
 }
+
 class TimeTableList {
   final List<TimeTable> timeTableList;
   TimeTableList({required this.timeTableList});
