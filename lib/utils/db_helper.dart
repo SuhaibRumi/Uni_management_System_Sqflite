@@ -30,10 +30,6 @@ class DBHelper {
      classId Integer primary key autoincrement,
      className text
      );
-     
- 
-  
-
 ''');
 
     await db.execute('''
@@ -51,9 +47,12 @@ class DBHelper {
       ''');
     await db.execute('''
   create Table `Assignments`(
-  assignmentId Integer primary key autoincrement,
-  assignmentName text,
-  assignmentDesc text
+   assignmentId Integer primary key autoincrement,
+   assignmentNo text, 
+   semesterId Integer,
+   sessionId Integer,
+   classId Integer
+  
 );
 ''');
 
@@ -67,6 +66,62 @@ class DBHelper {
    studentName text,
    isActive boolean default true
 );
+''');
+
+    await db.execute('''
+    create Table `Course`(
+
+      courseId Integer primary key autoincrement,
+      courseName text, 
+      semesterId Integer,
+      sessionId Integer,
+      classId Integer
+
+      );
+''');
+    await db.execute('''
+    create Table `Notification`
+      (
+
+    notificationId Integer primary key autoincrement,
+    notificationName text,
+    notificationDes text, 
+    semesterId Integer,
+    sessionId Integer,
+    classId Integer
+
+      );
+''');
+    await db.execute('''
+    create Table `Quiz`
+      (
+        
+      quizId Integer primary key autoincrement,
+      quizNo text,
+      semesterId Integer,
+      sessionId Integer,
+      classId Integer
+      );
+''');
+    await db.execute('''
+    create Table `Teacher`
+      (
+        teacherId Integer primary key autoincrement,
+        teacherName text,
+        teacherEmail text,
+        teacherPassword text,
+        teacherDepartment text
+      );
+''');
+    await db.execute('''
+    create Table `TimeTable`
+    ( 
+      timeTableId Integer primary key autoincrement,
+      timeTableDesc text,
+      semesterId Integer,
+      sessionId Integer,
+      classId Integer
+    );
 ''');
   }
 
@@ -90,7 +145,7 @@ class DBHelper {
     return id;
   }
 
-  Future<List<Map<String, Object?>>> getDataByQuery(
+  Future<List<Map<String, dynamic>>> getDataByQuery(
       {required String query}) async {
     Database database = await instance.db;
     var res = await database.rawQuery(query);

@@ -15,7 +15,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
   // final _assignmentNameController = TextEditingController();
   final _assignmentNoController = TextEditingController();
   var assignmentViewModel = AssigmentViewModel();
-  int? assignmentId;
+  String? assignmentId;
   bool isUpdate = false;
   @override
   Widget build(BuildContext context) {

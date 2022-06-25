@@ -23,6 +23,16 @@ class SemesterViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  getSemesterId() async {
+    String query =
+        "Select * from Semester where semesterName = '$semesterName'";
+    List<SemesterViewModel> semesters = [];
+    var data = await dbHelper.getDataByQuery(query: query);
+    semesters = data.map((i) => SemesterViewModel.fromMap(i)).toList();
+    notifyListeners();
+    return semesters[0].semesterId;
+  }
+
   updateData() async {
     String query =
         "Update Semester set semesterName = '$semesterName' where semesterId = '$semesterId' ";

@@ -24,6 +24,16 @@ class SessionViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  getSessionId() async {
+    String query = "Select * from Session where sessionName = '$sessionName'";
+    List<SessionViewModel> sessions = [];
+    var data = await dbHelper.getDataByQuery(query: query);
+   
+    sessions = data.map((i) => SessionViewModel.fromMap(i)).toList();
+    notifyListeners();
+    return sessions[0].sessionId;
+  }
+
   updateData() async {
     String query =
         "Update Session set sessionName = '$sessionName' where sessionId = '$sessionId'";

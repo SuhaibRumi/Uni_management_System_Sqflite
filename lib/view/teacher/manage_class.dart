@@ -13,6 +13,7 @@ class ClassMangemnetScreen extends StatefulWidget {
 class _ClassMangemnetScreenState extends State<ClassMangemnetScreen> {
   final _classController = TextEditingController();
   var classViewModel = ClassViewModel();
+   var classState = GlobalKey<FormFieldState>();
   int? classId;
   bool isUpdate = false;
 
@@ -44,7 +45,6 @@ class _ClassMangemnetScreenState extends State<ClassMangemnetScreen> {
                         icon: const Icon(
                           Icons.person,
                           size: 30,
-                         
                         ),
                       ),
                     ],

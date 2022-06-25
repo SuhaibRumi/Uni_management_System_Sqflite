@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:uni_mangement_system/utils/db_helper.dart';
 
 class TeacherViewModel extends ChangeNotifier {
-  String? teacherId;
-  String? teacherName;
-  String? teacherEmail;
-  String? teacherPassword;
-  String? teacherDepartment;
+  String? teacherId = '';
+  String? teacherName = '';
+  String? teacherEmail = '';
+  String? teacherPassword = '';
+  String? teacherDepartment = '';
 
   var dbhelper = DBHelper.instance;
   TeacherViewModel({
@@ -16,7 +16,7 @@ class TeacherViewModel extends ChangeNotifier {
     this.teacherPassword,
     this.teacherDepartment,
   });
-  
+
   factory TeacherViewModel.fromMap(Map map) {
     return TeacherViewModel(
       teacherId: map['teacherId'],
@@ -25,18 +25,18 @@ class TeacherViewModel extends ChangeNotifier {
       teacherPassword: map['teacherPassword'],
       teacherDepartment: map['teacherDepartment'],
     );
- 
   }
 
-
   saveData() async {
-    String query = "Insert into Teacher (teacherName,teacherEmail,teacherPassword,teacherDepartment) values ('$teacherName','$teacherEmail','$teacherPassword','$teacherDepartment')";
+    String query =
+        "Insert into Teacher (teacherName,teacherEmail,teacherPassword,teacherDepartment) values ('$teacherName','$teacherEmail','$teacherPassword','$teacherDepartment')";
     var id = await dbhelper.rawInsert(query: query);
     notifyListeners();
   }
 
   updateData() async {
-    String query = "Update Teacher set teacherName = '$teacherName',teacherEmail ='$teacherEmail', teacherPassword='$teacherPassword',teacherDepartment='$teacherDepartment'  where teacherId = $teacherId "  ;
+    String query =
+        "Update Teacher set teacherName = '$teacherName',teacherEmail ='$teacherEmail', teacherPassword='$teacherPassword',teacherDepartment='$teacherDepartment'  where teacherId = $teacherId ";
     var id = await dbhelper.rawUpdate(query: query);
     notifyListeners();
   }
@@ -55,5 +55,4 @@ class TeacherViewModel extends ChangeNotifier {
     notifyListeners();
     return teachers;
   }
-
 }

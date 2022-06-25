@@ -12,7 +12,7 @@ class ClassViewModel extends ChangeNotifier {
     this.className,
   });
 
-  factory ClassViewModel.fromMap(Map map) {
+  factory ClassViewModel.fromMap(Map<String, dynamic> map) {
     return ClassViewModel(
       classId: map["classId"],
       className: map["className"],
@@ -23,6 +23,15 @@ class ClassViewModel extends ChangeNotifier {
     String query = "Insert into Classes (className) values('$className')";
     var id = await dbHelper.rawInsert(query: query);
     notifyListeners();
+  }
+
+  getClassId() async {
+    String query = "Select * from Classes where className = '$className'";
+    List<ClassViewModel> classes = [];
+    var data = await dbHelper.getDataByQuery(query: query);
+    classes = data.map((i) => ClassViewModel.fromMap(i)).toList();
+    notifyListeners();
+    return classes[0].classId;
   }
 
   updateData() async {

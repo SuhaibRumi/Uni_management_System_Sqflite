@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uni_mangement_system/utils/constants.dart';
-import 'package:uni_mangement_system/view/splash_screen.dart';
+import 'package:uni_mangement_system/view/teacher/teacher.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch()
             .copyWith(secondary: const Color(0xFF63CF93)),
       ),
-      home: const SplashScreen(),
+      home: const ManageCourse(),
     );
   }
 }

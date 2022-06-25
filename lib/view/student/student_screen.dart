@@ -25,10 +25,10 @@ class _StudentScreenState extends State<StudentScreen> {
   var classViewModel = ClassViewModel();
   bool _isActive = true;
   bool isUpdate = false;
-  int? studId;
-  int? classId;
-  int? sessionId;
-  int? semesterId;
+  String? studId;
+  String? classId;
+  String? sessionId;
+  String? semesterId;
   Future<List<StudentsViewModel>>? data;
 
   @override
@@ -104,24 +104,19 @@ class _StudentScreenState extends State<StudentScreen> {
                           }
                           return DropdownButtonFormField(
                             decoration: const InputDecoration(
-                                prefixIcon: Icon(Icons.crisis_alert_outlined,
+                                prefixIcon: Icon(Icons.book_outlined,
                                     color: kSecondary)),
                             autofocus: true,
                             hint: const Text("Select Class"),
-                            items: const [
-                              DropdownMenuItem(
-                                  value: "data", child: Text("data"))
-                            ]
-                            //  snapshot.data!.map((cls) {
-                            //   return DropdownMenuItem(
-                            //     value: cls.classId,
-                            //     child: Text(cls.className ?? ""),
-                            //   );
-                            // }).toList()
-                            ,
+                            items: snapshot.data!.map((classes) {
+                              return DropdownMenuItem(
+                                value: classes.classId,
+                                child: Text(classes.className ?? ""),
+                              );
+                            }).toList(),
                             onChanged: (value) {
                               setState(() {
-                                classId = int.parse(value.toString());
+                                classId = value.toString();
                               });
                             },
                             validator: (value) {
@@ -153,7 +148,7 @@ class _StudentScreenState extends State<StudentScreen> {
                             }).toList(),
                             onChanged: (value) {
                               setState(() {
-                                sessionId = int.parse(value.toString());
+                                sessionId = value.toString();
                               });
                             },
                             validator: (value) {
@@ -184,7 +179,7 @@ class _StudentScreenState extends State<StudentScreen> {
                             }).toList(),
                             onChanged: (value) {
                               setState(() {
-                                semesterId = int.parse(value.toString());
+                                semesterId = value.toString();
                               });
                             },
                             validator: (value) {
@@ -212,7 +207,7 @@ class _StudentScreenState extends State<StudentScreen> {
                   } else {
                     _updateDta();
                   }
-                  // if (_formKey.currentState!.validate()) {}
+                  //  if (_formKey.currentState!.validate()) {}
                 },
                 height: 40,
                 width: 110,
@@ -294,7 +289,7 @@ class _StudentScreenState extends State<StudentScreen> {
                             DataCell(IconButton(
                               onPressed: () {
                                 setState(() {
-                                  studId = row.studId;
+                                  studId = studId;
                                   isUpdate = true;
                                 });
                                 _studentNameController.text = row.studentName!;
@@ -308,9 +303,10 @@ class _StudentScreenState extends State<StudentScreen> {
                               splashRadius: 20,
                             )),
                             DataCell(IconButton(
-                              onPressed: () async {
+                              onPressed: () {
                                 setState(() {
                                   studId = row.studId;
+                                  
                                 });
                                 _deleteDta();
                               },
@@ -347,6 +343,7 @@ class _StudentScreenState extends State<StudentScreen> {
     studentViewModel = StudentsViewModel(
       sessionId: sessionId,
       semesterId: semesterId,
+      classId: classId,
       studId: studId,
       studentName: _studentNameController.text,
       studRoll: _studRollController.text,
