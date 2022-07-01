@@ -1,4 +1,4 @@
-# uni_mangement_system
+# uni_mangement_system with Sqfilte
 
 A new Flutter project.
 
