@@ -21,7 +21,37 @@ This is a University Management System mobile application built using **Flutter*
 
 ## 📸 Screenshots
 
-*Coming Soon* – UI previews and feature highlights
+Here are some previews of the University Management System app:
+
+### 🔐 Splash Screen
+![Login Screen](screenshots/Onbording_screen.png)
+
+### 🔐 Login Screen
+![Login Screen](screenshots/login_screen.png)
+
+### 🔐 Student Screen
+![Login Screen](screenshots/5.png)
+
+### 🧑‍🏫 Semester Screen 
+![Teacher Dashboard](screenshots/3.png)
+
+### 📚 Class Management
+![Class Management](screenshots/1.png)
+
+### 📝 Assignment List
+![Assignment List](screenshots/4.png)
+
+### 📝 Session Screen 
+![Assignment List](screenshots/4.png)
+
+### 📝 Manage Notification Screen 
+![Assignment List](screenshots/7.png)
+
+### 📝 Send Time Table Screen 
+![Assignment List](screenshots/8.png)
+
+### 👨‍🎓 Student View – Assignments by Subject
+![Student Assignment View](screenshots/6.png)
 
 ## 🛠️ Built With
 - **Flutter** – UI toolkit
