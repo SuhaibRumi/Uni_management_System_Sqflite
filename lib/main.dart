@@ -18,11 +18,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'University Management System',
       theme: ThemeData(
-        primaryColor: kPrimaryColor,
-        backgroundColor: kCardColor,
-        // visualDensity: VisualDensity.adaptivePlatformDensity,
-        colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: const Color(0xFF63CF93)),
+        primaryColor: kPrimaryColor, colorScheme: ColorScheme.fromSwatch()
+            .copyWith(secondary: const Color(0xFF63CF93)).copyWith(background: kCardColor),
       ),
       home: const ManageCourse(),
     );
