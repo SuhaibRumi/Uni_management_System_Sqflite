@@ -1,16 +1,42 @@
-# uni_mangement_system with Sqfilte
+# 🎓 University Management System (Offline) – Flutter + Sqflite
 
-A new Flutter project.
+This is a University Management System mobile application built using **Flutter** and **Sqflite** for offline data storage. It allows both **students** and **teachers** to interact with academic information in a structured and user-friendly way, even without internet access.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+### 👨‍🏫 Teacher Module
+- Register and log in as a teacher
+- Manage **classes**, **semesters**, **sessions**
+- Create and update **assignments**
+- View lists of students and subjects
 
-A few resources to get you started if this is your first Flutter project:
+### 👨‍🎓 Student Module
+- Register and log in as a student
+- View available subjects and their related assignments
+- Track updated assignments for each subject
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 📱 Offline-First
+- Data is stored locally using **Sqflite**
+- Fully functional without an internet connection
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Screenshots
+
+*Coming Soon* – UI previews and feature highlights
+
+## 🛠️ Built With
+- **Flutter** – UI toolkit
+- **Sqflite** – Local SQLite database plugin
+- **Provider** (or your state management solution) – For managing app state
+
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/SuhaibRumi/Uni_management_System_Sqflite
+   cd Uni_management_System_Sqflite
+
+2. Install dependencies:
+flutter pub get
+
+3. Run the app:
+flutter run
+
+
